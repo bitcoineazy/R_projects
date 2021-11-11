@@ -1,4 +1,4 @@
-setwd("/home/noble6/DEV/R_projects/Lab_04")
+setwd("/home/noble6/DEV/R_projects/Functions")
 source("functions.R")
 
 DEBUG_ON <- TRUE
@@ -12,6 +12,8 @@ sessionInfo()
 
 # Задание №1
 pow_2 <- pow2(55, 5, 20)
+pow_2_2 <- pow2(55, 10, 0)
+pow_2_3 <- pow2(10, 44, "char")
 
 # Задание №2
 day_1 <- dayofWeek(1)
