@@ -172,8 +172,6 @@ sale.level <- function(way, name="import.in", saleLevel=50, filename="outlevel.t
     write.table(x = result, file =  paste0(way,filename),
                 row.names = flag, col.names = flag)
   }
-
-
 }
 
 standart_way <- "~/DEV/R_projects/Market/Marketplace_"
@@ -182,11 +180,11 @@ for (num in 1:10) {
   way <- paste0(standart_way, as.character(num), "/")
   generate.supply.sale(name=way,type="import.in")
   generate.supply.sale(name=way,type="export.out")
-  generate.supply.sale.many(way, min <- rand_num(2, 10),
-                            max <- rand_num(50, 100),
+  generate.supply.sale.many(way, min <- rand_num(30, 50),
+                            max <- rand_num(80, 100),
                             type="import_all.in",days_num = 30, goods = goods)
-  generate.supply.sale.many(way, min <- rand_num(2, 10),
-                            max <- rand_num(50, 100),
+  generate.supply.sale.many(way, min <- rand_num(30, 50),
+                            max <- rand_num(80, 100),
                             type="export_all.out",days_num = 30, goods = goods)
   sale.level(way)
   sale.level(way,name="import.in",saleLevel = 50)

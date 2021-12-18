@@ -1,4 +1,3 @@
-setwd("/home/noble6/DEV/R_projects/Functions")
 source("functions.R")
 
 DEBUG_ON <- TRUE

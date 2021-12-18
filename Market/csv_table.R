@@ -1,11 +1,11 @@
-#===================================константы
+#константы
 BUY1 <- 150
 BUY2 <- 50
 PRICE1 <- 300
 PRICE2 <- 100
 UTIL1 <- 10
 UTIL2 <- 30
-#===================================чтение файлов
+#чтение файлов
 
 read_txt <- function(way){
   return( read.table(file = way, header = T))
@@ -21,15 +21,14 @@ title[11] <- "Итог"
 title[12] <- "Среднее"
 
 rev <- rep(0, 12)
-final.res.tab <- data.frame("Название" = title,"Объём продаж" = rev, "Прибыль" = rev, "Реализация" = rev, "Списания" = rev)
+final.res.tab <- data.frame("Название" = title, "Объём продаж" = rev, "Прибыль" = rev, "Реализация" = rev, "Списания" = rev)
 
 #основной цикл
-
-for(num in 1:10){
+for(num in 1:10) {
   in_ <- read_txt(paste0(standart_way, title[num], "/", "import_all.in"))
   out_ <- read_txt(paste0(standart_way, title[num], "/", "export_all.out"))
   titles <- colnames(in_) #названия продуктов
-  #здесь мы создаем все столбцы для заполнения
+  #создаем все столбцы для заполнения
   if(num==1){ 
     for(i in 2:length(titles)){
       info <- c("Объём продаж", "Прибыль", "Реализация", "Списания")
@@ -50,11 +49,11 @@ for(num in 1:10){
 
   }
   
-    #===================================здесь подсчет результатов
+    #подсчет результатов
   for (i in 2:length(in_)) {
       info <- c("Объём продаж", "Прибыль", "Реализация", "Списания")
       pr <- sum(out_[, i] * PRICE1) # Объём продаж
-      if(num==1){
+      if (num==1) {
         print(pr)
       }
       pc <- pr - (sum(in_[, i]) * BUY1) - ((sum(in_[, i]) - sum(out_[, i])) * UTIL1) # Прибыль
@@ -64,7 +63,6 @@ for(num in 1:10){
       # Добавление приписки товара
       for(j in 1:4) {
         info[j] <- paste0(info[j], "_", titles[i])
-        
       }
 
       final.res.tab
@@ -72,12 +70,11 @@ for(num in 1:10){
       final.res.tab[, info[2]][num] <- pc
       final.res.tab[, info[3]][num] <- real
       final.res.tab[, info[4]][num] <- spis
-    
   }
   
 }
 
-#===================================итог по магазину
+#итог по магазину
 
 colnames <- names(final.res.tab)
 for (i in 2:ncol(final.res.tab)) {
